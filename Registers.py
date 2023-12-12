@@ -24,13 +24,15 @@ class Registers:
         return COLOR_SEQS[number % len(COLOR_SEQS)] + string + END_COLOR
         
     def __str__(self) -> str:
-        string = ""
-        
+        string = "".join([f"| {i} " for i in range(1,self.column_count+1)]) + "|\n"
         values = self.read_shift_registers()
-        if values & 0b1:  # İlk shift register'ın QRE sensörü (P0)
-            string += self.coloredText(1, "Shift 1, QRE Aktif\n")
-            
-        for i in range(8, self.total_count * 8, 8):
-            if values & (1 << i):
-                string += self.coloredText(i//8, f"Shift {i // 8 + 1}, QRE Aktif\n")
+        colors = {
+            "red": "\033[0;31m",
+            "green": "\033[1;32m",
+        }
+        for i in range(0, self.total_count * 8, 8):
+            condition = values & (1 << i)
+            string += "| {} ".format(colors["green"] + "X" + colors["end"] if condition else colors["red"] + "X" + colors["end"])
+            if(i // 8 % self.column_count == self.column_count - 1):
+                string += "|\n"
         return string

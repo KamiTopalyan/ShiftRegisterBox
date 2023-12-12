@@ -1,5 +1,5 @@
-from machine import Pin
 import time
+import os
 from SN74HC165N import SN74HC165N
 from Registers import Registers
 
@@ -14,3 +14,4 @@ registerGrid = Registers(1, 5, register)
 while True:
     print(registerGrid)
     time.sleep(1)
+    os.system('cls')
