@@ -14,4 +14,4 @@ registerGrid = Registers(1, 5, register)
 while True:
     print(registerGrid)
     time.sleep(1)
-    os.system('cls')
+    print ("\033c", end="")

@@ -17,5 +17,5 @@ for i in range(0, total_count * 8, 8):
 while True:
     print(string)
     sleep(1)
-    os.system('clear')
+    print("\033c", end="")
     
