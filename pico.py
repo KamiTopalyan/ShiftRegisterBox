@@ -12,6 +12,6 @@ register = SN74HC165N(PIN_LATCH, PIN_CLOCK, PIN_DATA)
 registerGrid = Registers(1, 5, register)
 
 while True:
-    print(registerGrid)
+    print(registerGrid.getText())
     time.sleep(1)
     print ("\033c", end="")

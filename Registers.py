@@ -19,7 +19,7 @@ class Registers:
         
         return register_values
     
-    def __str__(self) -> str:
+    def getText(self) -> str:
         string = "".join([f"| {i} " for i in range(1,self.column_count+1)]) + "|\n"
         values = self.read_shift_registers()
         colors = {
